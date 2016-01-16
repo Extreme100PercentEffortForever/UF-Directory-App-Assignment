@@ -31,14 +31,11 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		if (!$scope.newCode)
 			return;
 		// Add to main records
-		var lat = Number($scope.newLatitude)
-		var long = Number($scope.newLongitude)
+		var elat = Number($scope.newLatitude)
+		var elong = Number($scope.newLongitude)
 		$scope.listings.push({
 			code: $scope.newCode,
-			name: $scope.newName,
-			latitude: lat,
-			latitude: $scope.newLongitude,
-			address: $scope.newAddress
+			name: $scope.newName
 		});
 		// See $Scope.Reset...
 		$scope.Reset();
