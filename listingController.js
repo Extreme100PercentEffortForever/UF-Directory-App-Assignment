@@ -21,17 +21,23 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     }
     $scope.Reset();
 	
+	$scope.detReset - function () {
+		$scope.detAddr = '';
+	}
+	$scope.detReset;
+	
     $scope.addListing = function()
     {
 		if (!$scope.newCode)
 			return;
 		// Add to main records
 		var lat = Number($scope.newLatitude)
+		var long = Number($scope.newLongitude)
 		$scope.listings.push({
 			code: $scope.newCode,
 			name: $scope.newName,
-			//coordinates.latitude: lat,
-			//coordinates.latitude: $scope.newLongitude,
+			latitude: lat,
+			latitude: $scope.newLongitude,
 			address: $scope.newAddress
 		});
 		// See $Scope.Reset...
@@ -45,13 +51,17 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.showDetails = function(item)
     {
 		var index = $scope.listings.indexOf(item)
+		document.getElementById("detName").innerHTML = ' ';
+		document.getElementById("detCode").innerHTML = ' ';
+		document.getElementById("detLat").innerHTML = ' ';
+		document.getElementById("detLong").innerHTML = ' ';
+		document.getElementById("detAddr").innerHTML = ' ';
 		document.getElementById("detName").innerHTML = $scope.listings[index].name;
 		document.getElementById("detCode").innerHTML = $scope.listings[index].code;
 		document.getElementById("detLat").innerHTML = $scope.listings[index].coordinates.latitude;
-		if (!$scope.listings[index].coordinates.latitude || $scope.listings[index].coordinates.latitude == '')
-			document.getElementById("detLat").innerHTML = ''
 		document.getElementById("detLong").innerHTML = $scope.listings[index].coordinates.longitude;
 		document.getElementById("detAddr").innerHTML = $scope.listings[index].address;
+		$scope.detReset();
     };
   }
 ]);
