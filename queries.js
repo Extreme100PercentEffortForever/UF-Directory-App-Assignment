@@ -41,6 +41,8 @@ var updatePhelpsMemorial = function() {
 	   if (err) throw err;
 	   var entry = entries[0];
 	   entry.address = '102 Phelps Lab, Museum Road, Gainesville, FL 32603';
+	   entry.coordinates.latitude = 29.644611;
+	   entry.coordinates.longitude = -82.348852;
 	   entry.save(function(err) {
 		   if (err) throw err;
 		   console.log(entry);
